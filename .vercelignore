@@ -1,0 +1,9 @@
+.env*
+!.env.example
+.git
+.vercel
+node_modules
+tests
+database
+docker-compose.yml
+*.log

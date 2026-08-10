@@ -100,9 +100,8 @@
                 </div>
                 <div class="flex items-center gap-2 sm:gap-3">
                     <select id="admin-context-prodi" onchange="switchAdminProgramContext(this.value)" class="hidden max-w-64 rounded-lg border border-gray-200 bg-white px-2 py-1.5 text-xs font-semibold text-gray-700"></select>
-                    <button class="relative w-10 h-10 rounded-full text-gray-500 hover:bg-gray-100 transition" aria-label="Notifikasi">
-                        <i class="fa-regular fa-bell"></i>
-                        <span class="absolute top-2 right-2.5 w-2 h-2 rounded-full bg-red-500 ring-2 ring-white"></span>
+                    <button onclick="openChangePasswordModal()" class="w-10 h-10 rounded-full text-gray-500 hover:bg-amber-50 hover:text-amber-700 transition" title="Atur ulang kata sandi" aria-label="Atur ulang kata sandi">
+                        <i class="fa-solid fa-key"></i>
                     </button>
                     <div class="h-8 w-px bg-gray-200"></div>
                     <div class="flex items-center gap-2">

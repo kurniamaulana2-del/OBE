@@ -313,6 +313,60 @@
             if (passwordInput) passwordInput.value = '';
         }
 
+        function openChangePasswordModal() {
+            if (!currentUser) return;
+            document.getElementById('app-modal-root').innerHTML = `
+                <div class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
+                    <form onsubmit="submitOwnPasswordChange(event)" class="w-full max-w-md rounded-xl bg-white p-5 shadow-2xl">
+                        <div class="mb-4 flex items-center justify-between">
+                            <div>
+                                <h3 class="font-bold text-gray-900">Atur Ulang Kata Sandi</h3>
+                                <p class="text-xs text-gray-500">${escapeHtml(currentUser.username)} - ${escapeHtml(currentUser.name)}</p>
+                            </div>
+                            <button type="button" onclick="document.getElementById('app-modal-root').innerHTML=''" class="text-gray-500" aria-label="Tutup">
+                                <i class="fa-solid fa-xmark"></i>
+                            </button>
+                        </div>
+                        <label class="mb-1 block text-xs font-semibold" for="own-current-password">Kata Sandi Saat Ini</label>
+                        <input id="own-current-password" name="currentPassword" type="password" required autocomplete="current-password" class="w-full rounded border px-3 py-2 text-sm">
+                        <label class="mb-1 mt-3 block text-xs font-semibold" for="own-new-password">Kata Sandi Baru</label>
+                        <input id="own-new-password" name="newPassword" type="password" required minlength="8" autocomplete="new-password" class="w-full rounded border px-3 py-2 text-sm" placeholder="Minimal 8 karakter">
+                        <label class="mb-1 mt-3 block text-xs font-semibold" for="own-password-confirmation">Konfirmasi Kata Sandi Baru</label>
+                        <input id="own-password-confirmation" name="confirmation" type="password" required minlength="8" autocomplete="new-password" class="w-full rounded border px-3 py-2 text-sm">
+                        <div class="mt-4 flex justify-end gap-2">
+                            <button type="button" onclick="document.getElementById('app-modal-root').innerHTML=''" class="rounded border px-3 py-2 text-xs font-semibold">Batal</button>
+                            <button type="submit" class="rounded bg-blue-700 px-3 py-2 text-xs font-bold text-white disabled:cursor-not-allowed disabled:opacity-60">Simpan Kata Sandi</button>
+                        </div>
+                    </form>
+                </div>`;
+            document.getElementById('own-current-password').focus();
+        }
+
+        async function submitOwnPasswordChange(event) {
+            event.preventDefault();
+            const form = event.currentTarget;
+            const currentPassword = form.elements.currentPassword.value;
+            const newPassword = form.elements.newPassword.value;
+            const confirmation = form.elements.confirmation.value;
+            if (newPassword !== confirmation) return alert('Konfirmasi kata sandi baru tidak sama.');
+
+            const submitButton = form.querySelector('button[type="submit"]');
+            submitButton.disabled = true;
+            try {
+                const result = await apiRequest('/auth/change-password', {
+                    method: 'POST',
+                    body: { currentPassword, newPassword }
+                });
+                accessToken = result.token;
+                sessionStorage.setItem(ACCESS_TOKEN_KEY, accessToken);
+                document.getElementById('app-modal-root').innerHTML = '';
+                alert('Kata sandi berhasil diperbarui.');
+            } catch (error) {
+                alert(`Kata sandi gagal diperbarui: ${error.message}`);
+                submitButton.disabled = false;
+            }
+        }
+
         function getCurrentRole() {
             return currentUser ? currentUser.role : '';
         }

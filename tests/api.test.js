@@ -28,6 +28,18 @@ async function login(username, password) {
     return response.body.token;
 }
 
+test('serves only intended public files', async () => {
+    const home = await request(app).get('/');
+    assert.equal(home.status, 200);
+    assert.match(home.text, /<!DOCTYPE html>/i);
+
+    const stylesheet = await request(app).get('/assets/css/app.css');
+    assert.equal(stylesheet.status, 200);
+
+    const source = await request(app).get('/server/app.js');
+    assert.equal(source.status, 404);
+});
+
 beforeEach(async () => {
     const memoryDb = newDb({ autoCreateForeignKeyIndices: true });
     memoryDb.registerExtension('pgcrypto', schema => {
@@ -167,6 +179,38 @@ test('administrator can reset a password and the old password stops working', as
         .get('/api/auth/me')
         .set('Authorization', `Bearer ${oldLecturerToken}`);
     assert.equal(revokedSession.status, 401);
+});
+
+test('every account can change its own password and continue with a refreshed session', async () => {
+    const oldToken = await login('dosen-a', 'DosenTest123!');
+    const incorrect = await request(app)
+        .post('/api/auth/change-password')
+        .set('Authorization', `Bearer ${oldToken}`)
+        .send({ currentPassword: 'WrongPassword123!', newPassword: 'OwnChangedPassword123!' });
+    assert.equal(incorrect.status, 401);
+
+    const changed = await request(app)
+        .post('/api/auth/change-password')
+        .set('Authorization', `Bearer ${oldToken}`)
+        .send({ currentPassword: 'DosenTest123!', newPassword: 'OwnChangedPassword123!' });
+    assert.equal(changed.status, 200);
+    assert.ok(changed.body.token);
+
+    const revokedSession = await request(app)
+        .get('/api/auth/me')
+        .set('Authorization', `Bearer ${oldToken}`);
+    assert.equal(revokedSession.status, 401);
+
+    const refreshedSession = await request(app)
+        .get('/api/auth/me')
+        .set('Authorization', `Bearer ${changed.body.token}`);
+    assert.equal(refreshedSession.status, 200);
+
+    const oldLogin = await request(app)
+        .post('/api/auth/login')
+        .send({ username: 'dosen-a', password: 'DosenTest123!' });
+    assert.equal(oldLogin.status, 401);
+    await login('dosen-a', 'OwnChangedPassword123!');
 });
 
 test('administrator can save and lock a custom menu permission matrix', async () => {

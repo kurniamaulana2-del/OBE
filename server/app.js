@@ -408,6 +408,32 @@ function createApp({ pool }) {
 
     app.get('/api/auth/me', authenticate, (req, res) => res.json({ user: toPublicUser(req.user) }));
 
+    app.post('/api/auth/change-password', authenticate, asyncRoute(async (req, res) => {
+        const currentPassword = String(req.body.currentPassword || '');
+        const newPassword = String(req.body.newPassword || '');
+        if (!currentPassword) throw new HttpError(400, 'Current password is required.');
+        if (newPassword.length < 8) throw new HttpError(400, 'New password must contain at least 8 characters.');
+
+        const currentResult = await pool.query(
+            'SELECT password_hash FROM users WHERE id = $1',
+            [req.user.id]
+        );
+        if (!currentResult.rows[0] || !await bcrypt.compare(currentPassword, currentResult.rows[0].password_hash)) {
+            throw new HttpError(401, 'Current password is incorrect.');
+        }
+
+        const passwordHash = await bcrypt.hash(newPassword, 12);
+        const updated = await pool.query(
+            `UPDATE users SET password_hash = $1, auth_version = auth_version + 1, updated_at = NOW()
+             WHERE id = $2
+             RETURNING auth_version AS "authVersion"`,
+            [passwordHash, req.user.id]
+        );
+        res.json({
+            token: signAccessToken({ ...req.user, authVersion: updated.rows[0].authVersion })
+        });
+    }));
+
     app.get('/api/bootstrap', authenticate, asyncRoute(async (req, res) => {
         const prodiId = await resolveProgramContext(pool, req.user, req.query.prodiId);
         const [masterData, stateResult, accounts, lecturers] = await Promise.all([
@@ -703,8 +729,11 @@ function createApp({ pool }) {
         res.json(result);
     }));
 
-    app.use(express.static(path.join(__dirname, '..')));
-    app.get('/', (_req, res) => res.sendFile(path.join(__dirname, '..', 'prototipe_OBE_08-08.html')));
+    const publicRoot = path.join(__dirname, '..');
+    app.use('/assets', express.static(path.join(publicRoot, 'assets')));
+    app.get('/LogoUSG01.png', (_req, res) => res.sendFile(path.join(publicRoot, 'LogoUSG01.png')));
+    app.get('/LogoUSG02.png', (_req, res) => res.sendFile(path.join(publicRoot, 'LogoUSG02.png')));
+    app.get('/', (_req, res) => res.sendFile(path.join(publicRoot, 'prototipe_OBE_08-08.html')));
 
     app.use((error, _req, res, _next) => {
         if (error instanceof HttpError) return res.status(error.status).json({ error: error.message });
