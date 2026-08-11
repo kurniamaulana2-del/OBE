@@ -22,7 +22,7 @@
                     { id: 'ta-2025', code: '2025/2026', term: 'Ganjil', active: true }
                 ]
             },
-            
+
             plFinalized: true,
             cplFinalized: true,
             matrixCplPlFinalized: true,
@@ -49,252 +49,252 @@
             ],
             matrixCPL_PL: {
                 // CPL 1: Pengetahuan Fundamental
-                'CPL1_PL1': true, 
+                'CPL1_PL1': true,
                 'CPL1_PL2': true,
                 // CPL 2: Merancang sistem terintegrasi
-                'CPL2_PL1': true, 
+                'CPL2_PL1': true,
                 'CPL2_PL2': true,
                 // CPL 3: Eksperimen dan interpretasi data
                 'CPL3_PL2': true,
                 // CPL 4: Penyelesaian masalah kompleks
-                'CPL4_PL2': true,                
+                'CPL4_PL2': true,
                 // CPL 5: Metode dan alat teknik modern
-                'CPL5_PL1': true, 
-                'CPL5_PL2': true,                
+                'CPL5_PL1': true,
+                'CPL5_PL2': true,
                 // CPL 6: Komunikasi
-                'CPL6_PL1': true, 
-                'CPL6_PL3': true,                
+                'CPL6_PL1': true,
+                'CPL6_PL3': true,
                 // CPL 7: Perencanaan dan evaluasi tugas
-                'CPL7_PL2': true,                
+                'CPL7_PL2': true,
                 // CPL 8: Tim multidisiplin
                 'CPL8_PL1': true,
                 // CPL 9: Etika profesi dan masyarakat
-                'CPL9_PL2': true, 
+                'CPL9_PL2': true,
                 'CPL9_PL3': true,
                 // CPL 10: Belajar sepanjang hayat
                 'CPL10_PL3': true
             },
             mkList: [
                 // --- SEMESTER 1 ---
-                { 
-                    id: 'MK12', 
+                {
+                    id: 'MK12',
                     semester: '1',
-                    code: 'RI1L33', 
-                    name: 'Pengantar Teknik Industri', 
-                    sksTeori: 2, 
-                    sksPraktik: 0, 
-                    totalSks: 2, 
-                    jenis: 'MKWP', 
-                    cpls: ['CPL1', 'CPL9', 'CPL10'] 
+                    code: 'RI1L33',
+                    name: 'Pengantar Teknik Industri',
+                    sksTeori: 2,
+                    sksPraktik: 0,
+                    totalSks: 2,
+                    jenis: 'MKWP',
+                    cpls: ['CPL1', 'CPL9', 'CPL10']
                 },
-                { 
-                    id: 'MK21', 
-                    semester: '2', 
-                    code: 'RI2D21', 
-                    name: 'Kewarganegaraan', 
-                    sksTeori: 2, 
-                    sksPraktik: 0, 
-                    totalSks: 2, 
-                    jenis: 'MKDU', 
-                    cpls: ['CPL3', 'CPL7'] 
+                {
+                    id: 'MK21',
+                    semester: '2',
+                    code: 'RI2D21',
+                    name: 'Kewarganegaraan',
+                    sksTeori: 2,
+                    sksPraktik: 0,
+                    totalSks: 2,
+                    jenis: 'MKDU',
+                    cpls: ['CPL3', 'CPL7']
                 },
-                { 
-                    id: 'MK22', 
-                    semester: '2', 
-                    code: 'RI2E23', 
-                    name: 'Kimia Dasar', 
-                    sksTeori: 2, 
-                    sksPraktik: 0, 
-                    totalSks: 2, 
-                    jenis: 'MKWP', 
-                    cpls: ['CPL1', 'CPL5'] 
+                {
+                    id: 'MK22',
+                    semester: '2',
+                    code: 'RI2E23',
+                    name: 'Kimia Dasar',
+                    sksTeori: 2,
+                    sksPraktik: 0,
+                    totalSks: 2,
+                    jenis: 'MKWP',
+                    cpls: ['CPL1', 'CPL5']
                 },
-                { 
-                    id: 'MK23', 
-                    semester: '2', 
-                    code: 'RI2F23', 
-                    name: 'Material Teknik', 
-                    sksTeori: 2, 
-                    sksPraktik: 0, 
-                    totalSks: 2, 
-                    jenis: 'MKWP', 
-                    cpls: ['CPL2', 'CPL6'] 
+                {
+                    id: 'MK23',
+                    semester: '2',
+                    code: 'RI2F23',
+                    name: 'Material Teknik',
+                    sksTeori: 2,
+                    sksPraktik: 0,
+                    totalSks: 2,
+                    jenis: 'MKWP',
+                    cpls: ['CPL2', 'CPL6']
                 },
-                { 
-                    id: 'MK24', 
-                    semester: '2', 
-                    code: 'RI2G33', 
-                    name: 'Proses Manufaktur', 
-                    sksTeori: 2, 
-                    sksPraktik: 1, 
-                    totalSks: 3, 
-                    jenis: 'MKWP', 
-                    cpls: ['CPL4', 'CPL8'] 
+                {
+                    id: 'MK24',
+                    semester: '2',
+                    code: 'RI2G33',
+                    name: 'Proses Manufaktur',
+                    sksTeori: 2,
+                    sksPraktik: 1,
+                    totalSks: 3,
+                    jenis: 'MKWP',
+                    cpls: ['CPL4', 'CPL8']
                 },
-                { 
-                    id: 'MK25', 
-                    semester: '2', 
-                    code: 'RI2H33', 
-                    name: 'Statistika II', 
-                    sksTeori: 3, 
-                    sksPraktik: 0, 
-                    totalSks: 3, 
-                    jenis: 'MKWP', 
-                    cpls: ['CPL5', 'CPL10'] 
+                {
+                    id: 'MK25',
+                    semester: '2',
+                    code: 'RI2H33',
+                    name: 'Statistika II',
+                    sksTeori: 3,
+                    sksPraktik: 0,
+                    totalSks: 3,
+                    jenis: 'MKWP',
+                    cpls: ['CPL5', 'CPL10']
                 },
-                { 
-                    id: 'MK31', 
-                    semester: '3', 
-                    code: 'RI3F23', 
-                    name: 'Maqashid Syariah Industri', 
-                    sksTeori: 2, 
-                    sksPraktik: 0, 
-                    totalSks: 2, 
-                    jenis: 'MKWP', 
-                    cpls: ['CPL2', 'CPL7'] 
+                {
+                    id: 'MK31',
+                    semester: '3',
+                    code: 'RI3F23',
+                    name: 'Maqashid Syariah Industri',
+                    sksTeori: 2,
+                    sksPraktik: 0,
+                    totalSks: 2,
+                    jenis: 'MKWP',
+                    cpls: ['CPL2', 'CPL7']
                 },
-                { 
-                    id: 'MK32', 
-                    semester: '3', 
-                    code: 'RI3G23', 
-                    name: 'Mekanika Teknik', 
-                    sksTeori: 2, 
-                    sksPraktik: 0, 
-                    totalSks: 2, 
-                    jenis: 'MKWP', 
-                    cpls: ['CPL3', 'CPL5'] 
+                {
+                    id: 'MK32',
+                    semester: '3',
+                    code: 'RI3G23',
+                    name: 'Mekanika Teknik',
+                    sksTeori: 2,
+                    sksPraktik: 0,
+                    totalSks: 2,
+                    jenis: 'MKWP',
+                    cpls: ['CPL3', 'CPL5']
                 },
-                { 
-                    id: 'MK33', 
-                    semester: '3', 
-                    code: 'RI3H23', 
-                    name: 'Perilaku Organisasi', 
-                    sksTeori: 2, 
-                    sksPraktik: 0, 
-                    totalSks: 2, 
-                    jenis: 'MKWP', 
-                    cpls: ['CPL1', 'CPL8'] 
+                {
+                    id: 'MK33',
+                    semester: '3',
+                    code: 'RI3H23',
+                    name: 'Perilaku Organisasi',
+                    sksTeori: 2,
+                    sksPraktik: 0,
+                    totalSks: 2,
+                    jenis: 'MKWP',
+                    cpls: ['CPL1', 'CPL8']
                 },
-                { 
-                    id: 'MK34', 
-                    semester: '3', 
-                    code: 'RI3I33', 
-                    name: 'Riset Operasi I', 
-                    sksTeori: 3, 
-                    sksPraktik: 0, 
-                    totalSks: 3, 
-                    jenis: 'MKWP', 
-                    cpls: ['CPL4', 'CPL6'] 
+                {
+                    id: 'MK34',
+                    semester: '3',
+                    code: 'RI3I33',
+                    name: 'Riset Operasi I',
+                    sksTeori: 3,
+                    sksPraktik: 0,
+                    totalSks: 3,
+                    jenis: 'MKWP',
+                    cpls: ['CPL4', 'CPL6']
                 },
-                { 
-                    id: 'MK41', 
-                    semester: '4', 
-                    code: 'RI4C33', 
-                    name: 'Keselamatan dan Kesehatan Kerja', 
-                    sksTeori: 3, 
-                    sksPraktik: 0, 
-                    totalSks: 3, 
-                    jenis: 'MKWP', 
-                    cpls: ['CPL2', 'CPL9'] 
+                {
+                    id: 'MK41',
+                    semester: '4',
+                    code: 'RI4C33',
+                    name: 'Keselamatan dan Kesehatan Kerja',
+                    sksTeori: 3,
+                    sksPraktik: 0,
+                    totalSks: 3,
+                    jenis: 'MKWP',
+                    cpls: ['CPL2', 'CPL9']
                 },
-                { 
-                    id: 'MK42', 
-                    semester: '4', 
-                    code: 'RI4D42', 
-                    name: 'Kewirausahaan', 
-                    sksTeori: 1, 
-                    sksPraktik: 3, 
-                    totalSks: 4, 
-                    jenis: 'MKWU', 
-                    cpls: ['CPL5', 'CPL10'] 
+                {
+                    id: 'MK42',
+                    semester: '4',
+                    code: 'RI4D42',
+                    name: 'Kewirausahaan',
+                    sksTeori: 1,
+                    sksPraktik: 3,
+                    totalSks: 4,
+                    jenis: 'MKWU',
+                    cpls: ['CPL5', 'CPL10']
                 },
-                { 
-                    id: 'MK43', 
-                    semester: '4', 
-                    code: 'RI4E33', 
-                    name: 'Pengendalian dan Penjaminan Mutu', 
-                    sksTeori: 3, 
-                    sksPraktik: 0, 
-                    totalSks: 3, 
-                    jenis: 'MKWP', 
-                    cpls: ['CPL1', 'CPL4'] 
+                {
+                    id: 'MK43',
+                    semester: '4',
+                    code: 'RI4E33',
+                    name: 'Pengendalian dan Penjaminan Mutu',
+                    sksTeori: 3,
+                    sksPraktik: 0,
+                    totalSks: 3,
+                    jenis: 'MKWP',
+                    cpls: ['CPL1', 'CPL4']
                 },
-                { 
-                    id: 'MK44', 
-                    semester: '4', 
-                    code: 'RI4F23', 
-                    name: 'Perancangan dan Manajemen Organisasi Industri', 
-                    sksTeori: 2, 
-                    sksPraktik: 0, 
-                    totalSks: 2, 
-                    jenis: 'MKWP', 
-                    cpls: ['CPL3', 'CPL8'] 
+                {
+                    id: 'MK44',
+                    semester: '4',
+                    code: 'RI4F23',
+                    name: 'Perancangan dan Manajemen Organisasi Industri',
+                    sksTeori: 2,
+                    sksPraktik: 0,
+                    totalSks: 2,
+                    jenis: 'MKWP',
+                    cpls: ['CPL3', 'CPL8']
                 },
-                { 
-                    id: 'MK45', 
-                    semester: '4', 
-                    code: 'RI4G33', 
-                    name: 'Perencanaan dan Pengendalian Produksi', 
-                    sksTeori: 3, 
-                    sksPraktik: 0, 
-                    totalSks: 3, 
-                    jenis: 'MKWP', 
-                    cpls: ['CPL6', 'CPL7'] 
+                {
+                    id: 'MK45',
+                    semester: '4',
+                    code: 'RI4G33',
+                    name: 'Perencanaan dan Pengendalian Produksi',
+                    sksTeori: 3,
+                    sksPraktik: 0,
+                    totalSks: 3,
+                    jenis: 'MKWP',
+                    cpls: ['CPL6', 'CPL7']
                 },
-                { 
-                    id: 'MK51', 
-                    semester: '5', 
-                    code: 'RI5B33', 
-                    name: 'Perancangan Fasilitas', 
-                    sksTeori: 2, 
-                    sksPraktik: 1, 
-                    totalSks: 3, 
-                    jenis: 'MKWP', 
-                    cpls: ['CPL1', 'CPL3'] 
+                {
+                    id: 'MK51',
+                    semester: '5',
+                    code: 'RI5B33',
+                    name: 'Perancangan Fasilitas',
+                    sksTeori: 2,
+                    sksPraktik: 1,
+                    totalSks: 3,
+                    jenis: 'MKWP',
+                    cpls: ['CPL1', 'CPL3']
                 },
-                { 
-                    id: 'MK52', 
-                    semester: '5', 
-                    code: 'RI5C33', 
-                    name: 'Supply Chain Management', 
-                    sksTeori: 3, 
-                    sksPraktik: 0, 
-                    totalSks: 3, 
-                    jenis: 'MKWP', 
-                    cpls: ['CPL4', 'CPL9'] 
+                {
+                    id: 'MK52',
+                    semester: '5',
+                    code: 'RI5C33',
+                    name: 'Supply Chain Management',
+                    sksTeori: 3,
+                    sksPraktik: 0,
+                    totalSks: 3,
+                    jenis: 'MKWP',
+                    cpls: ['CPL4', 'CPL9']
                 },
-                { 
-                    id: 'MK53', 
-                    semester: '5', 
-                    code: 'RI5D32', 
-                    name: 'Metodologi Penelitian', 
-                    sksTeori: 3, 
-                    sksPraktik: 0, 
-                    totalSks: 3, 
-                    jenis: 'MKWU', 
-                    cpls: ['CPL2', 'CPL8'] 
+                {
+                    id: 'MK53',
+                    semester: '5',
+                    code: 'RI5D32',
+                    name: 'Metodologi Penelitian',
+                    sksTeori: 3,
+                    sksPraktik: 0,
+                    totalSks: 3,
+                    jenis: 'MKWU',
+                    cpls: ['CPL2', 'CPL8']
                 },
-                { 
-                    id: 'MK54', 
-                    semester: '5', 
-                    code: 'RI5E33', 
-                    name: 'Pemodelan Sistem', 
-                    sksTeori: 3, 
-                    sksPraktik: 0, 
-                    totalSks: 3, 
-                    jenis: 'MKWP', 
-                    cpls: ['CPL5', 'CPL7'] 
+                {
+                    id: 'MK54',
+                    semester: '5',
+                    code: 'RI5E33',
+                    name: 'Pemodelan Sistem',
+                    sksTeori: 3,
+                    sksPraktik: 0,
+                    totalSks: 3,
+                    jenis: 'MKWP',
+                    cpls: ['CPL5', 'CPL7']
                 },
-                { 
-                    id: 'MK55', 
-                    semester: '5', 
-                    code: 'RI5F33', 
-                    name: 'Pengukuran dan Perancangan Sistem Kerja', 
-                    sksTeori: 3, 
-                    sksPraktik: 0, 
-                    totalSks: 3, 
-                    jenis: 'MKWP', 
-                    cpls: ['CPL6', 'CPL10'] 
+                {
+                    id: 'MK55',
+                    semester: '5',
+                    code: 'RI5F33',
+                    name: 'Pengukuran dan Perancangan Sistem Kerja',
+                    sksTeori: 3,
+                    sksPraktik: 0,
+                    totalSks: 3,
+                    jenis: 'MKWP',
+                    cpls: ['CPL6', 'CPL10']
                 }
             ],
             cpmkList: {
@@ -330,7 +330,7 @@
                     weeklyDraftSaved: true,
                     weeklyDraftDirty: false,
                     komponenList: [
-                        { id: 'PTI_K1', jenis: 'Tugas', name: 'Peta Konsep Peran Teknik Industri', technique: 'non_tes', weeklyRowId: 'PTI_W1', weekNumber: '1, 2', criteria: ['Rubrik Analitik'], criterionType: 'Rubrik Analitik', criterionLabel: 'Rubrik Analitik', assignmentScope: 'Individu; sejarah, ruang lingkup, dan kontribusi teknik industri pada sistem manufaktur dan jasa.', assignmentInstructions: 'Susun peta konsep satu halaman dan uraian maksimal 750 kata dengan satu contoh penerapan lokal.', assignmentMethod: 'Diunggah melalui LMS dalam format PDF.', performanceEvidence: 'Peta konsep, uraian argumentatif, dan daftar pustaka.', durationDeadline: '7 hari setelah pertemuan ke-2.', assessmentNotes: 'Nilai minimum ketuntasan 60.', assessmentInstrument: 'Formatif', formativeCriterion: 'Rubrik Analitik', summativeCriterion: '', weights: { 'SUB1': 15 } },
+                        { id: 'PTI_K1', jenis: 'Kuis', name: 'Peta Konsep Peran Teknik Industri', technique: 'tes', weeklyRowId: 'PTI_W1', weekNumber: '1, 2', criteria: ['Rubrik Analitik'], criterionType: 'Rubrik Analitik', criterionLabel: 'Rubrik Analitik', assignmentScope: 'Individu; sejarah, ruang lingkup, dan kontribusi teknik industri pada sistem manufaktur dan jasa.', assignmentInstructions: 'Susun peta konsep satu halaman dan uraian maksimal 750 kata dengan satu contoh penerapan lokal.', assignmentMethod: 'Diunggah melalui LMS dalam format PDF.', performanceEvidence: 'Peta konsep, uraian argumentatif, dan daftar pustaka.', durationDeadline: '7 hari setelah pertemuan ke-2.', assessmentNotes: 'Nilai minimum ketuntasan 60.', assessmentInstrument: 'Formatif', formativeCriterion: 'Rubrik Analitik', summativeCriterion: '', weights: { 'SUB1': 15 } },
                         { id: 'PTI_K2', jenis: 'Tugas', name: 'Analisis Tren Digitalisasi Industri', technique: 'non_tes', weeklyRowId: 'PTI_W2', weekNumber: '3, 4', criteria: ['Rubrik Analitik'], criterionType: 'Rubrik Analitik', criterionLabel: 'Rubrik Analitik', assignmentScope: 'Kelompok; analisis dampak IoT, AI, otomasi, dan keberlanjutan pada satu sektor industri.', assignmentInstructions: 'Analisis minimal tiga sumber mutakhir, identifikasi peluang, risiko, dan usulan kesiapan organisasi.', assignmentMethod: 'Laporan kelompok dan diskusi kelas.', performanceEvidence: 'Laporan 5-7 halaman serta materi presentasi.', durationDeadline: '10 hari setelah pertemuan ke-4.', assessmentNotes: 'Setiap anggota menyertakan refleksi kontribusi.', assessmentInstrument: 'Formatif', formativeCriterion: 'Rubrik Analitik', summativeCriterion: '', weights: { 'SUB2': 15 } },
                         { id: 'PTI_K3', jenis: 'Hasil Proyek', name: 'Analisis Dilema Etika Keinsinyuran', technique: 'non_tes', weeklyRowId: 'PTI_W3', weekNumber: '5, 6', criteria: ['Rubrik Analitik'], criterionType: 'Rubrik Analitik', criterionLabel: 'Rubrik Analitik', assignmentScope: 'Individu; kasus konflik keselamatan, mutu, biaya, dan kepentingan pemangku kepentingan.', assignmentInstructions: 'Identifikasi fakta, pihak terdampak, pasal kode etik PII yang relevan, alternatif tindakan, dan rekomendasi.', assignmentMethod: 'Esai studi kasus melalui LMS.', performanceEvidence: 'Esai analitis 1.000-1.250 kata.', durationDeadline: '7 hari setelah pertemuan ke-6.', assessmentNotes: 'Argumentasi harus dapat ditelusuri ke kode etik dan sumber ilmiah.', assessmentInstrument: 'Formatif', formativeCriterion: 'Rubrik Analitik', summativeCriterion: '', weights: { 'SUB3': 10 } },
                         { id: 'PTI_K4', jenis: 'UTS', name: 'UTS Terintegrasi Etika Profesi', technique: 'tes', weeklyRowId: 'PTI_W4', weekNumber: '7', criteria: ['Rubrik Holistik'], criterionType: 'Rubrik Holistik', criterionLabel: 'Rubrik Holistik', assignmentScope: 'Individu; penguasaan konsep profesi, tanggung jawab insinyur, dan kode etik PII.', assignmentInstructions: 'Jawab soal uraian berbasis skenario secara tertutup dalam waktu yang ditentukan.', assignmentMethod: 'Tes tertulis luring.', performanceEvidence: 'Lembar jawaban UTS.', durationDeadline: '90 menit pada minggu UTS.', assessmentNotes: 'Ujian bersifat individual dan tanpa buku.', assessmentInstrument: 'Sumatif', formativeCriterion: '', summativeCriterion: 'Rubrik Holistik', weights: { 'SUB3': 10 } },
@@ -394,7 +394,7 @@
                         evaluasiMatrix: {},
                         weeklyPlan: [
                             { id: 'PTI_W1', weekSelections: ['1', '2'], mingguKe: '1, 2', subcpmkId: 'SUB1', subcpmkIds: ['SUB1'], subcpmkWeights: { SUB1: 15 }, indikatorPenilaian: 'Ketepatan menjelaskan evolusi teknik industri, keluasan identifikasi ruang lingkup, dan relevansi contoh penerapan.', metodePembelajaranDaring: 'Video pengantar, forum tanya jawab, dan kuis diagnostik di LMS.', metodePembelajaranLuring: 'Ceramah interaktif, think-pair-share, dan penyusunan peta konsep.', bahanKajianIds: ['PTI_BK1'], daftarPustakaIds: ['PTI_DP1', 'PTI_DP2'], assessmentComponents: [
-                                { id: 'PTI_K1', technique: 'non_tes', name: 'Peta Konsep Peran Teknik Industri', jenis: 'Tugas', weight: 15, criterionType: 'Rubrik Analitik', criterionLabel: 'Rubrik Analitik', assignmentScope: 'Individu; sejarah, ruang lingkup, dan kontribusi teknik industri pada sistem manufaktur dan jasa.', assignmentInstructions: 'Susun peta konsep satu halaman dan uraian maksimal 750 kata dengan satu contoh penerapan lokal.', assignmentMethod: 'Diunggah melalui LMS dalam format PDF.', performanceEvidence: 'Peta konsep, uraian argumentatif, dan daftar pustaka.', durationDeadline: '7 hari setelah pertemuan ke-2.', assessmentNotes: 'Nilai minimum ketuntasan 60.', assessmentInstrument: 'Formatif', formativeCriterion: 'Rubrik Analitik', summativeCriterion: '' }
+                                { id: 'PTI_K1', technique: 'tes', name: 'Peta Konsep Peran Teknik Industri', jenis: 'Kuis', weight: 15, criterionType: 'Rubrik Analitik', criterionLabel: 'Rubrik Analitik', assignmentScope: 'Individu; sejarah, ruang lingkup, dan kontribusi teknik industri pada sistem manufaktur dan jasa.', assignmentInstructions: 'Susun peta konsep satu halaman dan uraian maksimal 750 kata dengan satu contoh penerapan lokal.', assignmentMethod: 'Diunggah melalui LMS dalam format PDF.', performanceEvidence: 'Peta konsep, uraian argumentatif, dan daftar pustaka.', durationDeadline: '7 hari setelah pertemuan ke-2.', assessmentNotes: 'Nilai minimum ketuntasan 60.', assessmentInstrument: 'Formatif', formativeCriterion: 'Rubrik Analitik', summativeCriterion: '' }
                             ] },
                             { id: 'PTI_W2', weekSelections: ['3', '4'], mingguKe: '3, 4', subcpmkId: 'SUB2', subcpmkIds: ['SUB2'], subcpmkWeights: { SUB2: 15 }, indikatorPenilaian: 'Ketepatan mengidentifikasi tren, kualitas bukti, dan kedalaman analisis peluang serta risiko digitalisasi.', metodePembelajaranDaring: 'Telaah video industri dan diskusi asinkron berbasis artikel.', metodePembelajaranLuring: 'Case-based learning, diskusi kelompok, dan gallery walk.', bahanKajianIds: ['PTI_BK2'], daftarPustakaIds: ['PTI_DP5', 'PTI_DP6', 'PTI_DP8'], assessmentComponents: [
                                 { id: 'PTI_K2', technique: 'non_tes', name: 'Analisis Tren Digitalisasi Industri', jenis: 'Tugas', weight: 15, criterionType: 'Rubrik Analitik', criterionLabel: 'Rubrik Analitik', assignmentScope: 'Kelompok; analisis dampak IoT, AI, otomasi, dan keberlanjutan pada satu sektor industri.', assignmentInstructions: 'Analisis minimal tiga sumber mutakhir, identifikasi peluang, risiko, dan usulan kesiapan organisasi.', assignmentMethod: 'Laporan kelompok dan diskusi kelas.', performanceEvidence: 'Laporan 5-7 halaman serta materi presentasi.', durationDeadline: '10 hari setelah pertemuan ke-4.', assessmentNotes: 'Setiap anggota menyertakan refleksi kontribusi.', assessmentInstrument: 'Formatif', formativeCriterion: 'Rubrik Analitik', summativeCriterion: '' }
