@@ -69,6 +69,39 @@ function buildSeedProgramPayload({ prodiId, academicYearId, userIds }) {
     return payload;
 }
 
+function mergeSeedProgramPayload(currentValue, seedValue) {
+    if (Array.isArray(currentValue) && Array.isArray(seedValue)) {
+        const canMergeById = [...currentValue, ...seedValue]
+            .every(item => item && typeof item === 'object' && !Array.isArray(item) && item.id);
+        if (!canMergeById) return structuredClone(seedValue);
+
+        const seedItems = new Map(seedValue.map(item => [String(item.id), item]));
+        const merged = currentValue.map(item => {
+            const seedItem = seedItems.get(String(item.id));
+            if (!seedItem) return structuredClone(item);
+            seedItems.delete(String(item.id));
+            return mergeSeedProgramPayload(item, seedItem);
+        });
+        return merged.concat([...seedItems.values()].map(item => structuredClone(item)));
+    }
+
+    if (
+        currentValue && seedValue
+        && typeof currentValue === 'object' && !Array.isArray(currentValue)
+        && typeof seedValue === 'object' && !Array.isArray(seedValue)
+    ) {
+        const merged = structuredClone(currentValue);
+        for (const [key, value] of Object.entries(seedValue)) {
+            merged[key] = key in currentValue
+                ? mergeSeedProgramPayload(currentValue[key], value)
+                : structuredClone(value);
+        }
+        return merged;
+    }
+
+    return structuredClone(seedValue);
+}
+
 async function seed(client) {
     await client.query('BEGIN');
     try {
@@ -109,18 +142,26 @@ async function seed(client) {
             userIds.set(account.id, userId);
         }
 
-        const payload = buildSeedProgramPayload({ prodiId, academicYearId, userIds });
+        const seedPayload = buildSeedProgramPayload({ prodiId, academicYearId, userIds });
+        const currentState = await client.query(
+            'SELECT version, payload FROM program_states WHERE study_program_id = $1 FOR UPDATE',
+            [prodiId]
+        );
+        const currentRow = currentState.rows[0];
+        const payload = currentRow
+            ? mergeSeedProgramPayload(currentRow.payload, seedPayload)
+            : seedPayload;
         await syncNormalizedProgramData(client, prodiId, payload);
         const updatedBy = userIds.get(
             seedState.accounts.find(account => account.role === 'kaprodi')?.id
         ) || null;
         await client.query(
             `INSERT INTO program_states (study_program_id, version, payload, updated_by)
-             VALUES ($1, 1, $2::jsonb, $3)
+             VALUES ($1, $2, $3::jsonb, $4)
              ON CONFLICT (study_program_id) DO UPDATE
-             SET version = 1, payload = EXCLUDED.payload,
+             SET version = EXCLUDED.version, payload = EXCLUDED.payload,
                  updated_by = EXCLUDED.updated_by, updated_at = NOW()`,
-            [prodiId, JSON.stringify(payload), updatedBy]
+            [prodiId, currentRow ? currentRow.version + 1 : 1, JSON.stringify(payload), updatedBy]
         );
 
         await client.query('COMMIT');
@@ -157,4 +198,10 @@ if (require.main === module) {
         .finally(() => pool.end());
 }
 
-module.exports = { SEEDED_PASSWORDS, buildSeedProgramPayload, getSeedMasterData, seed };
+module.exports = {
+    SEEDED_PASSWORDS,
+    buildSeedProgramPayload,
+    getSeedMasterData,
+    mergeSeedProgramPayload,
+    seed
+};

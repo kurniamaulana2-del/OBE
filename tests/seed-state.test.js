@@ -5,7 +5,7 @@ const path = require('node:path');
 const { randomUUID } = require('node:crypto');
 const { newDb, DataType } = require('pg-mem');
 const seedState = require('../database/seed-state');
-const { seed } = require('../database/seed');
+const { mergeSeedProgramPayload, seed } = require('../database/seed');
 const { unseed } = require('../database/unseed');
 
 test('seed imports the complete state and unseed removes it', async () => {
@@ -16,6 +16,33 @@ test('seed imports the complete state and unseed removes it', async () => {
             returns: DataType.uuid,
             impure: true,
             implementation: randomUUID
+        });
+
+        test('seed payload merge preserves existing courses and classes', () => {
+            const current = {
+                mkList: [
+                    { id: 'MK12', name: 'Old course name', custom: 'preserved' },
+                    { id: 'MK99', name: 'Existing course' }
+                ],
+                classData: {
+                    existingClass: { mkId: 'MK99', students: [{ nim: '1', name: 'Existing student' }] }
+                }
+            };
+            const incoming = {
+                mkList: [{ id: 'MK12', name: 'Pengantar Teknik Industri' }],
+                classData: {
+                    seededClass: { mkId: 'MK12' }
+                }
+            };
+
+            const merged = mergeSeedProgramPayload(current, incoming);
+
+            assert.deepEqual(merged.mkList, [
+                { id: 'MK12', name: 'Pengantar Teknik Industri', custom: 'preserved' },
+                { id: 'MK99', name: 'Existing course' }
+            ]);
+            assert.deepEqual(merged.classData.existingClass, current.classData.existingClass);
+            assert.deepEqual(merged.classData.seededClass, incoming.classData.seededClass);
         });
     });
     const adapter = memoryDb.adapters.createPg();
